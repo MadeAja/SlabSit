@@ -1,5 +1,6 @@
 ## SlabSit
 Sit on the stair block
+<img src="hhttps://github.com/brokiem/SlabSit/blob/master/assets/slabsit.PNG">
 
 # Feature
 You can sit on the slab block
