@@ -23,6 +23,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\level\Position;
 use pocketmine\Player;
 use pocketmine\block\Block;
+use pocketmine\block\Slab;
 use pocketmine\block\Stair;
 use pocketmine\level\Level;
 use pocketmine\plugin\PluginBase;
@@ -96,7 +97,7 @@ class StairSeat extends PluginBase{
         return (
             ($this->isDefaultToggleEnabled() || $this->isToggleEnabled($player)) &&
             $this->canApplyWorld($block->getLevel()) &&
-            $block instanceof Block &&
+            $block instanceof Slab &&
             !$this->isSitting($player) &&
             ($this->isAllowedWhileSneaking() || (!$this->isAllowedWhileSneaking() && !$player->isSneaking()))
         );
