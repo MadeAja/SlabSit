@@ -48,32 +48,6 @@ class StairSeat extends PluginBase{
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
     }
 
-    public function isEnabledStair(Block $block) : bool{
-        $conf = $this->getConfig();
-        $id = $block->getId();
-        return (
-            $block instanceof Stair &&
-            ($conf->get('allow-seat-upsidedown') ? true : $block->getDamage() <= 3) &&
-            (
-                ($id === Block::ACACIA_STAIRS && $conf->get('enable-stair-acasia', true)) ||
-                ($id === Block::BIRCH_STAIRS && $conf->get('enable-stair-birch', true)) ||
-                ($id === Block::BRICK_STAIRS && $conf->get('enable-stair-brick', true)) ||
-                ($id === Block::COBBLESTONE_STAIRS && $conf->get('enable-stair-cobblestone', true)) ||
-                ($id === Block::DARK_OAK_STAIRS && $conf->get('enable-stair-dark_oak', true)) ||
-                ($id === Block::JUNGLE_STAIRS && $conf->get('enable-stair-jungle', true)) ||
-                ($id === Block::NETHER_BRICK_STAIRS && $conf->get('enable-stair-nether_brick', true)) ||
-                ($id === Block::OAK_STAIRS && $conf->get('enable-stair-oak', true)) ||
-                ($id === Block::PURPUR_STAIRS && $conf->get('enable-stair-purpur', true)) ||
-                ($id === Block::QUARTZ_STAIRS && $conf->get('enable-stair-quartz', true)) ||
-                ($id === Block::RED_SANDSTONE_STAIRS && $conf->get('enable-stair-red_sandstone', true)) ||
-                ($id === Block::SANDSTONE_STAIRS && $conf->get('enable-stair-sandstone', true)) ||
-                ($id === Block::SPRUCE_STAIRS && $conf->get('enable-stair-spruce', true)) ||
-                ($id === Block::STONE_BRICK_STAIRS && $conf->get('enable-stair-stone_brick', true)) ||
-                ($id === Block::STONE_STAIRS && $conf->get('enable-stair-stone', true))
-            )
-        );
-    }
-
     public function isAllowedHigherHeight() : bool{
         return (bool) $this->getConfig()->get('allow-seat-high-height', true);
     }
@@ -122,11 +96,9 @@ class StairSeat extends PluginBase{
         return (
             ($this->isDefaultToggleEnabled() || $this->isToggleEnabled($player)) &&
             $this->canApplyWorld($block->getLevel()) &&
-            $this->isEnabledStair($block) &&
+            $block instanceof Block &&
             !$this->isSitting($player) &&
-            ($this->isAllowedHigherHeight() || (!$this->isAllowedHigherHeight() && ($player->y >= $block->y))) &&
-            ($this->isAllowedWhileSneaking() || (!$this->isAllowedWhileSneaking() && !$player->isSneaking())) &&
-            (!$this->isEnabledCheckOnBlock() || ($this->isEnabledCheckOnBlock() && $block->getLevel()->getBlock($block->up()) instanceof Air))
+            ($this->isAllowedWhileSneaking() || (!$this->isAllowedWhileSneaking() && !$player->isSneaking()))
         );
     }
 
