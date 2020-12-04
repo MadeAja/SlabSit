@@ -14,52 +14,31 @@ apply-world-names: write, world, name, here
 # ----------------------------------------------------------------------------
 
 # Default toggle
-# If this value is true, player can sit on the stairs, but its not, they must toggle by sit command to sit
+# If this value is true, player can sit on the slabs, but its not, they must toggle by sit command to sit
 # Value: true | false
 
 default-toggle-sit: true
 
 # ----------------------------------------------------------------------------
 
-# Allow player to sit on seat if its height is higher than player
-# Value: true | false
-
-allow-seat-high-height: true
-
-# ----------------------------------------------------------------------------
-
-# Allow player to sit on upside-down stairs
-# Value: true | false
-
-allow-seat-upsidedown: false
-
-# ----------------------------------------------------------------------------
-
-# Allow player to sit on stairs while sneaking
+# Allow player to sit on slabs while sneaking
 # Value: true | false
 
 allow-seat-while-sneaking: true
 
 # ----------------------------------------------------------------------------
 
-# Player who sit on their stairs will stand up when break
+# Player who sit on their slabs will stand up when break
 # Value: true | false
 
 stand-up-when-break-block: true
 
 # ----------------------------------------------------------------------------
 
-# Player who sit on their stairs will not be damaged from all causes
+# Player who sit on their slabs will not be damaged from all causes
 # Value: true | false
 
 disable-damage-when-sit: false
-
-# ----------------------------------------------------------------------------
-
-# If set to true, player can sit on the stairs where on the block must be an air
-# Value: true | false
-
-enable-check-up-block: false
 
 # ----------------------------------------------------------------------------
 
@@ -67,26 +46,6 @@ enable-check-up-block: false
 # Value: true | false
 
 allow-only-right-click: false
-
-# ----------------------------------------------------------------------------
-
-# Enabled stairs list
-# To disable specific stair from seat, please change the value to false
-enable-stair-acasia: true
-enable-stair-birch: true
-enable-stair-brick: true
-enable-stair-cobblestone: true
-enable-stair-dark_oak: true
-enable-stair-jungle: true
-enable-stair-nether_brick: true
-enable-stair-oak: true
-enable-stair-purpur: true
-enable-stair-quartz: true
-enable-stair-red_sandstone: true
-enable-stair-sandstone: true
-enable-stair-spruce: true
-enable-stair-stone: true
-enable-stair-stone_brick: true
 
 # -----------------------------------------------------------------------------
 
@@ -102,7 +61,7 @@ register-toggle-command: true
 
 # Toggle Command Label
 # Command label will be set to this value (default: /sit)
-toggle-command-label: sit
+toggle-command-label: slabsit
 
 # -----------------------------------------------------------------------------
 
