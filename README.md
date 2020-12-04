@@ -19,5 +19,5 @@ To edit, open config.yml in plugin folder.
  * If you check whether player is sitting on the slb, please call method isSitting from SlabSit class
 ```php
 /** @var \pocketmine\Player $player */
-isSitting(Player $player) : bool
+isSlabSitting(Player $player) : bool
 ```
