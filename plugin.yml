@@ -1,11 +1,11 @@
-name: StairSeat
+name: SlabSit
 api: 3.14.0
-main: korado531m7\StairSeat\StairSeat
-version: 1.5.6
+main: korado531m7\SlabSit\SlabSit
+version: 1.5.8
 author: korado531m7
-description: Enable to sit on the stair block
-mcpe-protocol: 419
+description: Enable to sit on the slab block
+mcpe-protocol: [407, 408, 419]
 permissions:
-  stairseat.toggle:
+  slabsit.toggle:
     description: "Toggle to sit"
     default: true

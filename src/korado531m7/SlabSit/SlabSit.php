@@ -1,35 +1,33 @@
 <?php
 /*
- * This file is part of StairSeat.
+ * This file is part of SlabSit.
  *
- *  StairSeat is free software: you can redistribute it and/or modify
+ *  SlabSit is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  StairSeat is distributed in the hope that it will be useful,
+ *  SlabSit is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with StairSeat.  If not, see <http://www.gnu.org/licenses/>.
+ * along with SlabSit.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace korado531m7\StairSeat;
+namespace korado531m7\SlabSit;
 
-use pocketmine\block\Air;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\level\Position;
 use pocketmine\Player;
 use pocketmine\block\Block;
 use pocketmine\block\Slab;
-use pocketmine\block\Stair;
 use pocketmine\level\Level;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
-class StairSeat extends PluginBase{
+class SlabSit extends PluginBase{
     const CONFIG_VERSION = 4;
 
     /** @var SeatData[] */
@@ -47,10 +45,6 @@ class StairSeat extends PluginBase{
             $this->getServer()->getCommandMap()->register($this->getName(), new ToggleCommand($this));
         }
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-    }
-
-    public function isAllowedHigherHeight() : bool{
-        return (bool) $this->getConfig()->get('allow-seat-high-height', true);
     }
 
     public function isAllowedWhileSneaking() : bool{
@@ -71,10 +65,6 @@ class StairSeat extends PluginBase{
 
     public function isDisabledDamagesWhenSit() : bool{
         return (bool) $this->getConfig()->get('disable-damage-when-sit', false);
-    }
-
-    public function isEnabledCheckOnBlock() : bool{
-        return (bool) $this->getConfig()->get('enable-check-up-block', false);
     }
 
     public function isAllowedOnlyRightClick() : bool{
@@ -98,7 +88,7 @@ class StairSeat extends PluginBase{
             ($this->isDefaultToggleEnabled() || $this->isToggleEnabled($player)) &&
             $this->canApplyWorld($block->getLevel()) &&
             $block instanceof Slab &&
-            !$this->isSitting($player) &&
+            !$this->isSlabSitting($player) &&
             ($this->isAllowedWhileSneaking() || (!$this->isAllowedWhileSneaking() && !$player->isSneaking()))
         );
     }
@@ -132,14 +122,14 @@ class StairSeat extends PluginBase{
     }
 
     /**
-     * Return player is sitting on the stairs.
+     * Return player is sitting on the slabs.
      * Developers have to use this method to check whether player is sitting
      *
      * @param Player $player
      *
      * @return bool
      */
-    public function isSitting(Player $player) : bool{
+    public function isSlabSitting(Player $player) : bool{
         return $this->getSeatDataByPlayer($player) instanceof SeatData;
     }
 

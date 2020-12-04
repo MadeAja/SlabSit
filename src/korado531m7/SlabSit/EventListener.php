@@ -1,22 +1,22 @@
 <?php
 /*
- * This file is part of StairSeat.
+ * This file is part of SlabSit.
  *
- *  StairSeat is free software: you can redistribute it and/or modify
+ *  SlabSit is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  StairSeat is distributed in the hope that it will be useful,
+ *  SlabSit is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with StairSeat.  If not, see <http://www.gnu.org/licenses/>.
+ * along with SlabSit.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace korado531m7\StairSeat;
+namespace korado531m7\SlabSit;
 
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
@@ -31,10 +31,10 @@ use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
 
 class EventListener implements Listener{
-    /** @var StairSeat */
+    /** @var SlabSit */
     private $instance;
     
-    public function __construct(StairSeat $instance){
+    public function __construct(SlabSit $instance){
         $this->instance = $instance;
     }
 
@@ -81,7 +81,7 @@ class EventListener implements Listener{
     public function onDamage(EntityDamageEvent $event) : void{
         $sacrifice = $event->getEntity();
         if($sacrifice instanceof Player){
-            if($this->instance->isSitting($sacrifice) && $this->instance->isDisabledDamagesWhenSit()){
+            if($this->instance->isSlabSitting($sacrifice) && $this->instance->isDisabledDamagesWhenSit()){
                 $event->setCancelled();
             }
         }
