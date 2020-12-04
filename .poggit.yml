@@ -1,8 +1,8 @@
---- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/korado531m7/StairSeat
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/brokiem/StairSeat
 branches:
 - master
 projects:
-  StairSeat:
+  SlabSit:
     path: ""
     icon: "/assets/icon.png"
 ...
